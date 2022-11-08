@@ -18,8 +18,6 @@ public class AuthenticationService {
     public boolean encryptAndStore(String username, String password) {
     //generate new string with hashedPassword
         Dotenv dotenv = Dotenv.load();
-        System.out.println(dotenv.get("COST_FACTOR"));
-
         String hashedPassword = hashAlg.hashToString(Integer.parseInt(dotenv.get("COST_FACTOR")), password.toCharArray());
         credentialStore.put(username, hashedPassword);
         return true;
